@@ -1,0 +1,344 @@
+/* Global Styles */
+:root {
+    --bg-color: #000;
+    --text-color: #fff;
+    --accent-color: #888;
+    --overlay-dark: rgba(0, 0, 0, 0.6);
+    --overlay-light: rgba(255, 255, 255, 0.7);
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Noto Sans KR', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+}
+
+/* Typography */
+h1,
+h2,
+h3 {
+    font-family: var(--font-heading);
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: var(--accent-color);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--accent-color);
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+/* Fixed Logo */
+.fixed-logo {
+    position: fixed;
+    top: 30px;
+    left: 30px;
+    font-family: var(--font-heading);
+    letter-spacing: 1px;
+    font-weight: normal !important;
+    font-size: 1.5rem;
+    color: #fff;
+    /* Start white for hero */
+    z-index: 1000;
+
+    mix-blend-mode: difference;
+    /* Ensures visibility on both light and dark backgrounds */
+    opacity: 0;
+    animation: fadeIn 1s forwards 0.5s;
+    font-weight: 700;
+}
+
+/* Layout Utilities */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Parallax Section */
+.parallax-section {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    text-align: center;
+}
+
+.parallax-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    /* Creates the parallax effect */
+    z-index: -1;
+}
+
+/* Mobile support for parallax (fixed attachment often buggy on mobile) */
+@media (max-width: 768px) {
+    .parallax-bg {
+        background-attachment: scroll;
+    }
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.overlay.dark-overlay {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8));
+}
+
+.overlay.white-overlay {
+    background: rgba(255, 255, 255, 0.85);
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    padding: 2rem;
+    width: 100%;
+}
+
+.hero-content {
+    margin-top: -50px;
+}
+
+.dark-text {
+    color: #111;
+}
+
+.light-text {
+    color: #fff;
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.7;
+    z-index: 2;
+}
+
+.scroll-indicator span {
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.arrow-down {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #fff;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-10px);
+    }
+
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Profile Section Specifics */
+.profile-details {
+    font-size: 1.1rem;
+    text-align: left;
+    margin: 0 auto;
+    max-width: 700px;
+}
+
+.profile-details p {
+    margin-bottom: 0.8rem;
+    padding-left: 1rem;
+    text-indent: -1rem;
+}
+
+/* Studio Section Specifics */
+.studio-desc {
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+    line-height: 1.8;
+}
+
+.location {
+    font-size: 1.2rem;
+    color: #ccc;
+}
+
+/* Contact Section (Simple Section) */
+.simple-section {
+    padding: 100px 0 50px;
+    text-align: center;
+    background-color: #fff;
+    color: #111;
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.contact-message {
+    font-size: 1.3rem;
+    margin-bottom: 3rem;
+    font-weight: 300;
+}
+
+.btn-instagram {
+    display: inline-block;
+    border: 2px solid #111;
+    padding: 15px 40px;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+    margin-bottom: 3rem;
+}
+
+.btn-instagram:hover {
+    background-color: #111;
+    color: #fff;
+}
+
+.tags {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 4rem;
+}
+
+.tags span {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.footer {
+    border-top: 1px solid #eee;
+    padding-top: 2rem;
+    font-size: 0.8rem;
+    color: #888;
+}
+
+/* Animations */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s forwards;
+}
+
+.fade-in.delay-1 {
+    animation-delay: 0.5s;
+}
+
+.fade-in.delay-2 {
+    animation-delay: 1s;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.fade-in-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .profile-details p {
+        font-size: 0.95rem;
+    }
+
+    .studio-desc {
+        font-size: 1.2rem;
+    }
+
+    .content {
+        padding: 1.5rem;
+    }
+}
