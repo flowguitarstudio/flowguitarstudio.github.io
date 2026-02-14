@@ -71,12 +71,18 @@ h1 {
     color: #fff;
     /* Start white for hero */
     z-index: 1000;
+    transition: color 0.3s ease;
+    /* Smooth color transition */
 
-    mix-blend-mode: difference;
-    /* Ensures visibility on both light and dark backgrounds */
+    /* mix-blend-mode: difference; Removed as per request for strict white/black control */
+    
     opacity: 0;
     animation: fadeIn 1s forwards 0.5s;
     font-weight: 700;
+}
+
+.fixed-logo.dark {
+    color: #000;
 }
 
 /* Layout Utilities */
