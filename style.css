@@ -76,6 +76,7 @@ h1 {
 
     /* mix-blend-mode: difference; Removed as per request for strict white/black control */
     
+
     opacity: 0;
     animation: fadeIn 1s forwards 0.5s;
     font-weight: 700;
@@ -251,7 +252,15 @@ h1 {
     font-weight: 300;
 }
 
-.btn-instagram {
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 3rem;
+}
+
+.btn-contact {
     display: inline-block;
     border: 2px solid #111;
     padding: 15px 40px;
@@ -259,10 +268,9 @@ h1 {
     text-transform: uppercase;
     letter-spacing: 2px;
     transition: all 0.3s ease;
-    margin-bottom: 3rem;
 }
 
-.btn-instagram:hover {
+.btn-contact:hover {
     background-color: #111;
     color: #fff;
 }

@@ -45,4 +45,13 @@ document.addEventListener('DOMContentLoaded', () => {
     sections.forEach(section => {
         logoObserver.observe(section);
     });
+
+    // SMS link dynamic body for iOS/Android compatibility
+    const smsLink = document.getElementById('sms-link');
+    if (smsLink) {
+        const message = "[Flow Guitar Studio] 레슨 문의드립니다.\n1. 성함: > \n2. 연령대(성인/학생): > \n3. 기타 경험: > \n4. 상담 희망 시간: > ";
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        const separator = isIOS ? '&' : '?';
+        smsLink.href = `sms:010-2193-7184${separator}body=${encodeURIComponent(message)}`;
+    }
 });
